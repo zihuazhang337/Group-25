@@ -3,14 +3,14 @@ layout: default
 title:  Team
 ---
 
-# {{ page.title }}
+# {{ Team Members }}
 
 
-## USER 1
-***UCI Net ID***: ucinetid1
+## Zihua Zhang
+***UCI Net ID***: Zihuaz
 
-## USER 2
-***UCI Net ID***: ucinetid2
+## Sixian Chen 
+***UCI Net ID***: Sixianc
 
-## USER 3
-***UCI Net ID***: ucinetid3
+## Changkai Yuan
+***UCI Net ID***: Changkaiy
