@@ -11,8 +11,8 @@ title: Proposal
 
 
 ## Evaluation Plan
-# Quantitative evaluation
+### Quantitative evaluation
     One of the numerical metrics would be the time spending of an agent to kill the monster. The baselines of our project consist of the following components: the loss of the agent’s health point and the loss of the monster’s health point. We want our agent to learn to attack the monster and ultimately kill the monster. Our design is to let the agent study from its actions so that each action that leads to the loss of the monster’s health point would be considered a successful action, then the agent would do that same with higher probability. We also want the agent to learn to avoid damage, so actions that would lead to the state that the agent loses his health point would be reduced.
 
-# Qualitative evaluation	
+### Qualitative evaluation	
     In general cases, the examples that our idea will definitely work on is that the agent spends some period to kill the monster or be killed by the monster. The expected outputs are a long sequence of actions. Error analysis and introspection: suppose we have a plot with typical Cartesian graph, and the x-axis indicates each trial, and the y-axis would the score of each trial. We would use this plot to keep track of our agent’s behavior. If the plot performs an increasing trend line, then the agent is doing the right thing; otherwise, we may need to make changes on the AI algorithm. The total score of each run will be calculated based on the loss agent’s health point, the monster’s health point and time spending on each run. The best case will be  the agent can kill the monster with the least amount of time and least cost of the agent’s health pint
