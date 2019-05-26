@@ -18,7 +18,7 @@ title:  Home
 
 
 ## Agent ScreenShots
-![barroth1](barroth1.jpg)
+![](barroth1.jpg |width=48)
 
 
 
