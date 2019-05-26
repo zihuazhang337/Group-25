@@ -5,7 +5,7 @@ title:  Home
 
 
 # Welcome to Monster_Hunter_Frontier AI Project!!
-![MHFC](/docs/MHF.jpg)
+![MHFC](MHF.jpg)
 (picture from: http://www.9minecraft.net/monster-hunter-frontier-craft-mod/)
 
 
