@@ -18,7 +18,8 @@ in easy-to-read and easy-to-write plain text.
 No angle brackets `<></>` required for
 paragraphs, lists, blockquotes, tables, etc.
 
-![alt text] (https://github.com/zihuazhang337/Monster_Hunter_Frontier-/blob/master/docs/MHF.jpg)
+![alt text][MHF]
+[MHF}: https://github.com/zihuazhang337/Monster_Hunter_Frontier-/blob/master/docs/MHF.jpg
 
 This is a paragraph (in Markdown). Some more
 text here.
