@@ -18,7 +18,7 @@ title:  Home
 
 
 ## Agent ScreenShots
-![](barroth1.jpg |width=48)
+<img src="barroth1.jpg" height="60%" width="60%">
 
 
 
