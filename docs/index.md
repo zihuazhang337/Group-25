@@ -19,7 +19,6 @@ title:  Home
 
 ## Agent ScreenShots
 ![barroth1](barroth1.jpg)
-![alt text](picture 2 )
 
 
 
