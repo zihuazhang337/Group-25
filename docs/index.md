@@ -16,25 +16,13 @@ title:  Home
 - [Final](final.html)
 
 
-Source code: https://github.com/USER/PROJECT (_fix this_)
+
+## Agent ScreenShots
+![alt text](picture 1 )
+![alt text](picture 2 )
 
 
-This is a paragraph (in Markdown). Some more
-text here.
 
-This is another paragraph.
+### Source code:
+https://github.com/USER/PROJECT (_fix this_)
 
-This is a list:
-
-- Orange
-- Apple
-- Blueberry
-
-$$x^2 = y^2$$
-
-
-Just getting started with Markdown?
-See the [HTML <-> Markdown Quick Reference (Cheat Sheet)][quickref].
-
-
-[picture from]: http://www.9minecraft.net/monster-hunter-frontier-craft-mod/
