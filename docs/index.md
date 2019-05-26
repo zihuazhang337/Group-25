@@ -9,6 +9,9 @@ title:  Home
 (picture from: http://www.9minecraft.net/monster-hunter-frontier-craft-mod/)
 
 
+## Project Summary
+  body text
+
 ## Progress Reports:
 
 - [Proposal](proposal.html)
