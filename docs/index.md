@@ -21,8 +21,7 @@ title:  Home
 
 
 ## Agent ScreenShots
-<img src="barroth_1.jpg" height="40%" width="40%">
-<img src="barroth_dead.jpg" height="40%" width="40%">
+<img src="barroth_1.jpg" height="50%" width="50%"> <img src="barroth_dead.jpg" height="50%" width="50%">
 
 
 
