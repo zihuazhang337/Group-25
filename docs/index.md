@@ -5,11 +5,12 @@ title:  Home
 
 
 # Welcome to Monster_Hunter_Frontier AI Project!!
-![alt text](https://github.com/zihuazhang337/Monster_Hunter_Frontier-/blob/master/docs/MHF.jpg )[picture]
+![alt text](https://github.com/zihuazhang337/Monster_Hunter_Frontier-/blob/master/docs/MHF.jpg )
+[picture from]
 
 Source code: https://github.com/USER/PROJECT (_fix this_)
 
-Reports:
+## Progress Reports:
 
 - [Proposal](proposal.html)
 - [Status](status.html)
@@ -34,4 +35,4 @@ Just getting started with Markdown?
 See the [HTML <-> Markdown Quick Reference (Cheat Sheet)][quickref].
 
 
-[picture]: http://www.9minecraft.net/monster-hunter-frontier-craft-mod/
+[picture from]: http://www.9minecraft.net/monster-hunter-frontier-craft-mod/
