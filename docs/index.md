@@ -18,6 +18,7 @@ in easy-to-read and easy-to-write plain text.
 No angle brackets `<></>` required for
 paragraphs, lists, blockquotes, tables, etc.
 
+./doc/MHF.jpg
 
 This is a paragraph (in Markdown). Some more
 text here.
