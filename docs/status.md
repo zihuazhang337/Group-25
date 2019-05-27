@@ -20,13 +20,13 @@ The reward function takes the agent health point and monster health point as inp
 
 ## Evaluation
 We use the monster total damage for the quantitative evaluation. The goal of our project is let the agent learns how to kill the monster efficiently, so if the agent does learn the policy of killing the monster, it will try to damage the monster as much as possible. Therefore, the damage for each trial is a good parameter to estimate how good the agent performs. 
-![](/status_result/Damage_Barroth.png)
+![](/status result/Damage Barroth.png)
 ![](/status result/Damage Tigrex.png)
 When agent combat with Barroth. With only a few trains, it learns how to kill the monster. Then when it deals with Tigrex, which is another monster and harder to fight, the result is worse. However, after some overlayers, the agent begins to learn how to fight. The above graph has shown that the average damage of the last three trials are better than the first three trials, indicating that the agent does learn how to fight with the monster by Q-learning.
 
 For qualitative evaluation, we use the final score of each trial. The final score is the cumulated reward that the agent gets in a trial. It shows how well the agent can kill the monster. The final score will be decreased if the agent is hit by the monster or it takes too long to kill the monster. It will ensure that the agent really knows the best way to handle the monster, like dodging monster’s attack.
-![Final score (Barroth)](status result/Final_score_Barroth.png)
-![Final score (Tigrex)](status result/Final score Tigrex.png)
+![](/status result/Final score Barroth.png)
+![](/status result/Final score Tigrex.png)
 The above two graphs are very similar. Comparing the first few trials and the last few one, the score does improve, but it does not seem like it finds the best way to fight. The score is fluctuating.
 
 ## Remaining Goals and Challenges
