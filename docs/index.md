@@ -26,7 +26,9 @@ title:  Home
 
 
 ### Source code:
-[mh_setup.py](mh_setup.html)
-[mh_helper.py](mh_helper.html)
+[mh_setup](mh_setup.html)
+
+
+[mh_helper](mh_helper.html)
 
 
