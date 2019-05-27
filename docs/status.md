@@ -20,7 +20,7 @@ The reward function takes the agent health point and monster health point as inp
 
 ## Evaluation
 We use the monster total damage for the quantitative evaluation. The goal of our project is let the agent learns how to kill the monster efficiently, so if the agent does learn the policy of killing the monster, it will try to damage the monster as much as possible. Therefore, the damage for each trial is a good parameter to estimate how good the agent performs. 
-![](MHF.jpg)
+![name](MHF.jpg)
 ![](Monster_Hunter_Frontier-/docs/status result/Damage Tigrex.png?raw=true)
 When agent combat with Barroth. With only a few trains, it learns how to kill the monster. Then when it deals with Tigrex, which is another monster and harder to fight, the result is worse. However, after some overlayers, the agent begins to learn how to fight. The above graph has shown that the average damage of the last three trials are better than the first three trials, indicating that the agent does learn how to fight with the monster by Q-learning.
 
