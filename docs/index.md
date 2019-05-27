@@ -26,5 +26,7 @@ title:  Home
 
 
 ### Source code:
-https://github.com/USER/PROJECT (_fix this_)
+[mh_setup.py](mh_setup.py)
+[mh_helper.py](mh_helper.py)
+
 
