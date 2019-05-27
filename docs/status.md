@@ -21,7 +21,7 @@ The reward function takes the agent health point and monster health point as inp
 ## Evaluation
 We use the monster total damage for the quantitative evaluation. The goal of our project is let the agent learns how to kill the monster efficiently, so if the agent does learn the policy of killing the monster, it will try to damage the monster as much as possible. Therefore, the damage for each trial is a good parameter to estimate how good the agent performs. 
 
-![](/status_result/Damage_Barroth.png){:height="50%" width="50%"}
+![](/status_result/Damage_Barroth.png) {:height="40%" width="40%"}
 
 ![](/status_result/Damage_Tigrex.png){:height="50%" width="50%"}
 
