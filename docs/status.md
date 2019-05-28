@@ -38,7 +38,8 @@ The above two graphs are very similar. Comparing the first few trials and the la
 
 ## Video
 
-[![MHF](MHF.jpg)](https://www.youtube.com/watch?v=ICqtUzS98JM "Monster Hunter")
+[![MHF](MHF.jpg)](https://www.youtube.com/watch?v=ICqtUzS98JM "Monster HUnter")
+
 
 
 ## Remaining Goals and Challenges
