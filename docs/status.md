@@ -35,6 +35,12 @@ For qualitative evaluation, we use the final score of each trial. The final scor
 
 The above two graphs are very similar. Comparing the first few trials and the last few one, the score does improve, but it does not seem like it finds the best way to fight. The score is fluctuating.
 
+
+## Video
+
+[![Monster Hunter](barroth.jpg)](https://www.youtube.com/watch?v=ICqtUzS98JM "Monster Hunter")
+
+
 ## Remaining Goals and Challenges
 First, our agent knows how to kill the monster, but can’t avoid damage from the monster and it takes a long time to kill the monster, so we want to let it learn a way to maximize the final score. Secondly, in this prototype, we only use the Q-learning, so we may try other methods in the next few weeks, like gradient policy. At last, we will change our states, since they are quite simple, so in many different circumstances; they may be represented by the same state. Also, we want to add more features. Currently, we only have two features to represent the circumstance, which is hard for the agent to predict the next action of the monster precisely. We will not change the hard coding part since we want the agent to always face the monster and attack when it is close to the monster. Learning those skills waste a lot of time, so hard coding this part is better, and it does improve the final score. Our ultimate goal is let the agent know how to kill the monster without getting damage and with least amount of time, which means the agents need to predict monster’s next action and choose the best action to do. Therefore, locating the monster and sequence of actions that make the agent get close to it are essential.
 
