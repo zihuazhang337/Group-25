@@ -58,7 +58,7 @@ Our ultimate goal is to let the agent kill the monster as fast as possible. Ther
 
 Comparing the run time and the above two graphs, we can see that when the scores are low, the run time is also longer. If the agent requires longer time, it usually in some new circumstances, so it takes some random action and wastes time. Because the agent does not know how to do, it is easily got kill be the monster and cause a lower score.
 
-The graph above shows that there is a decreasing trend on the rounds 29-41. Even though at some trials the running time is not always decreasing, again the monster's movement is complicated and hard to predict, so it is possible to have bizarre result in some trial. In addition, the score has an increasing trend line. Therefore, the decreasing trend line indicates that the agent is learning to accomplish our goal of killing the monster as soon as possible.
+The graph above shows that there is a decreasing trend on the rounds 29-41. Even though at some trials the running time is not always decreasing, again the monster's movement is complicated and hard to predict, so it is possible to have bizarre result in some trial. In addition, the score has an increasing trend line. Therefore, the decreasing trend line in this graph indicates that the agent is learning to accomplish our goal of killing the monster as soon as possible.
 
 
     
