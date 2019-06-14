@@ -48,6 +48,9 @@ The score is a very important source to evaluate the agent how good they learn t
 The score and damage graph are similar, for the damage affect the score heavily. 
 
 ### Run time
+
+The movement of the monster is very hard to predict, which can be a reason why there is a valley around 36-39 rounds. Overall, the score of the agent stays around 7000 after learning. Therefore the agent does learn its goal of killing the monster.
+
 Our ultimate goal is to let the agent kill the monster as fast as possible. Therefore, the run time is also important. 
 
 
