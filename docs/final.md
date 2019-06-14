@@ -22,7 +22,7 @@ The algorithm we use is Q-learning. Q-learning can learn a policy that tells the
      
 Q_new = (1-learning_rate) * Q_old + learning_rate * (reward + discount_factor * Q_optimal). 
 
-![](/final_png/Q1.png){:height="70%" width="70%"}
+![](/final_png/Q1.png){:height="40%" width="40%"}
 
 In our project, we use Q-learning to update the Q-table, and then choose the best action from Q-table. If there are multiple actions give the same Q value, we will choose one of them randomly. Using Q-table, our agent will have an optimal policy to handle different circumstances. 
 
