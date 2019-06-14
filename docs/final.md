@@ -1,7 +1,6 @@
-
 ---
 layout: default
-title:  Final Report
+title: Final Report
 ---
 
 
@@ -34,25 +33,21 @@ The reward function takes the agent health point and monster health point as inp
 
 
 ## Evaluation
-
-### Damage
-
+###Damage
 We use the monster total damage for the quantitative evaluation. The goal of our project is let the agent learns how to kill the monster, so if the agent does learn the policy of killing the monster, it will try to damage the monster as much as possible. Therefore, the damage for each trial is a good parameter to estimate how good the agent preforms. 
 
 ![](/final_png/D1.png){:height="70%" width="70%"}
 
 The health of monster is around 3500, so the agent does try to kill the monster. However, it is hard to kill the monster every time, for the monster is very active and power, if agent make a mistake, it will get a lot of damage. Around 20 to 30 episodes, there a valley. We think the problem is that the agent updates the policy in some special case, and it affects the original policy.
 
-### Score
-
+###Score
 The score is a very important source to evaluate the agent how good they learn to kill the monster
 
 ![](/final_png/S1.png){:height="70%" width="70%"}
 
 The score and damage graph are similar, for the damage affect the score heavily. 
 
-### Run Time
-
+###Run time
 Our ultimate goal is let the agent to kill the monster as fast as possible. Therefore, run time is also important. 
 
 
