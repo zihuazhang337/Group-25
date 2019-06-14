@@ -1,7 +1,6 @@
 """
-hunter is trying to get the best present. Help him to learn what he should do.
+hunter try to learn the best way to kill the monsterw
 
-Author: Moshe Lichman and Sameer Singh
 """
 from __future__ import division
 import numpy as np
@@ -19,45 +18,16 @@ import mh_helper as submission
 from collections import defaultdict, deque
 from timeit import default_timer as timer
 
-items=submission.items
-inventory_limit = 3
-food_recipes = submission.food_recipes
-rewards_map = submission.rewards_map
 monster = 'barroth'
-#monster = 'Sheep'
+#monster = 'tigrex'
 monster_life = 1
 hunter_life = 1
-
-def buildPositionList(items):
-    """Places the items in a circle."""
-    positions = []
-    angle = 2*math.pi/len(items)
-    for i in range(len(items)):
-        item = items[i]
-        x = int(6*math.sin(i*angle))
-        y = int(6*math.cos(i*angle))
-        positions.append((x, y))
-    return positions
-
-
-def getItemDrawing(positions):
-    """Create the XML for the items."""
-    drawing = ""
-    index = 0
-    for p in positions:
-        item = items[index].split()
-        drawing += '<DrawItem x="' + str(p[0]) + '" y="228" z="' + str(p[1]) + '" type="' + item[0]
-        if len(item) > 1:
-            drawing += '" variant="' + item[1]
-        drawing += '" />'
-        index += 1
-    return drawing
-
+m_x = 20.5
+m_z = 30
+min_epsilon = 0.05
 
 def GetMissionXML(summary):
     ''' Build an XML mission string that uses the RewardForCollectingItem mission handler.'''
-
-    positions = buildPositionList(items)
 
     return '''<?xml version="1.0" encoding="UTF-8" ?>
     <Mission xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -81,7 +51,8 @@ def GetMissionXML(summary):
             <ServerHandlers>
                 <FlatWorldGenerator generatorString="3;7,220*1,4*3,2,80;3;biome_1" />
                 <DrawingDecorator>
-                    <DrawCuboid x1="0" y1="226" z1="0" x2="40" y2="240" z2="40" type="glass" />
+                    <DrawCuboid x1="-3" y1="226" z1="-3" x2="43" y2="236" z2="43" type="stone" />
+                    <DrawCuboid x1="0" y1="236" z1="0" x2="40" y2="240" z2="40" type="glass" />
                     <DrawCuboid x1="1" y1="226" z1="1" x2="39" y2="239" z2="39" type="air" />
                 </DrawingDecorator>
                 <ServerQuitWhenAnyAgentFinishes />
@@ -112,7 +83,7 @@ def GetMissionXML(summary):
                 <MissionQuitCommands/>
                 <InventoryCommands/>
                 <ObservationFromNearbyEntities>
-                    <Range name="entities" xrange="60" yrange="1" zrange="60"/>
+                    <Range name="entities" xrange="60" yrange="20" zrange="60"/>
                 </ObservationFromNearbyEntities>
                 <ObservationFromFullInventory/>
                 <AgentQuitFromCollectingItem>
@@ -125,7 +96,7 @@ def GetMissionXML(summary):
 
 
 class hunter(object):
-    def __init__(self, alpha=0.3, gamma=1, n=5):
+    def __init__(self, alpha=0.3, gamma=1, n=10):
         """Constructing an RL agent.
 
         Args
@@ -133,9 +104,10 @@ class hunter(object):
             gamma:  <float>  value decay rate   (default = 1)
             n:      <int>    number of back steps to update (default = 1)
         """
-        self.epsilon = 0.2  # chance of taking a random action instead of the best
+        self.epsilon = 0.3  # chance of taking a random action instead of the best
         self.q_table = {}
         self.n, self.alpha, self.gamma = n, alpha, gamma
+        self.t = 0
 
     @staticmethod
     def get_obj_locations(agent_host):
@@ -177,7 +149,7 @@ class hunter(object):
 
 #monster init pos: 20.5 30
     def battlesetup(self, agent_host, teleport_x = 24, teleport_z = 30):
-        """Directly teleport to a specific position."""
+        """Set up the battle"""
         tp_command = "tp " + str(teleport_x)+ " 226 " + str(teleport_z)
 
         agent_host.sendCommand("chat /give @p diamond_sword 1 0 {ench:[{id:16,lvl:1000},{id:19,lvl:50}]}")
@@ -243,16 +215,26 @@ class hunter(object):
     
     def get_state(self, hunter, monster):
         distance = math.sqrt((hunter[1] - monster[1]) **2 + (hunter[2] - monster[2])**2)
-        if distance < 6:
-            d = "C"
-        elif distance < 16:
-            d = "M"
+#        if distance < 5:
+#            d = "A"
+#        elif distance < 10:
+#            d = "B"
+#        elif distance < 15:
+#            d = "C"
+#        elif distance < 20:
+#            d = "D"
+#        else:
+#            d = "E"
+        if distance < 5:
+            d = 0
         else:
-            d = "F"
+            d = distance // 1
         facing = 0
         if hunter[0]*monster[0] < 0 and (180 - 45 < (abs(hunter[0]) % 180) + (abs(monster[0]) % 180) < 180 + 45):
             facing  = 1
-        s = [d, facing]
+        speed = math.sqrt((m_x-monster[1])**2 + (m_z-monster[2])**2)
+        speed = speed // 3
+        s = [d, facing,speed]
         return tuple(s)
 
     
@@ -338,7 +320,7 @@ class hunter(object):
 
 
     def act(self, agent_host, current_a, current_obj):
-        reward = -1
+        reward = -3
         self.movement(agent_host, current_a[1]+current_obj['hunter'][1], current_a[2]+current_obj['hunter'][2], current_a[0])
         global hunter_life
         global monster_life
@@ -346,20 +328,20 @@ class hunter(object):
         time.sleep(0.20)
         new_obj = self.get_obj_locations(agent_host)
         
-# get hit: -100
+# get hit: -loss * 1
 # die: -1000
         if 'hunter' not in new_obj:
             reward -= 1000
         elif new_obj['hunter'][3] < hunter_life:
-            reward -= 100
+            reward -= (hunter_life - new_obj['hunter'][3]) * 1
             hunter_life = new_obj['hunter'][3]
         
-# hit the monster: +150
+# hit the monster: +loss * 2
 # kill the monster: + 1500
         if monster not in new_obj:
             reward += 1500
         elif new_obj[monster][3] < monster_life:
-            reward += 150
+            reward += (monster_life - new_obj[monster][3]) * 2
             monster_life = new_obj[monster][3]
         return reward
     
@@ -376,6 +358,11 @@ class hunter(object):
         S, A, R = deque(), deque(), deque()
         done_update = False
         while not done_update:
+            # change the epsilon
+            if self.t > 500 and self.t % 20 == 0:
+                self.epsilon -= 0.01
+            self.t += 1
+            
             obj = self.get_obj_locations(agent_host)
             monster_hp =obj[monster][3]
             s0 = self.get_state(obj['hunter'],obj[monster])
@@ -390,9 +377,13 @@ class hunter(object):
             global monster_life
             monster_life = obj[monster][3]
             hunter_life = obj['hunter'][3]
-
+            run_t = 0
             T = sys.maxsize
-            for t in range(3000):
+            for t in range(sys.maxsize):
+                if run_t >= 600:
+                    break
+                else:
+                    run_t += 1
                 obj = self.get_obj_locations(agent_host)
                 if not 225 < obj['hunter'][4] < 227:
                     if obj['hunter'][3] > 0:
@@ -404,10 +395,7 @@ class hunter(object):
                                 time.sleep(0.1)
                 if t < T:
 # do the last action and get the reward
-                    if S[-1][0] == "C":
-                        agent_host.sendCommand("attack 1")
-                    else:
-                        agent_host.sendCommand("attack 0")
+                    agent_host.sendCommand("attack 1")
                     time.sleep(0.20)
                     current_r = self.act(agent_host, a[A[-1]],obj)
                     score += current_r
@@ -441,11 +429,11 @@ class hunter(object):
                         self.update_q_table(tau, S, A, R, T)
                     done_update = True
                     break
+
         return (score, damage)
 
 if __name__ == '__main__':
-#    random.seed(0)
-    #sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)  # flush print output immediately
+    random.seed(time.clock())
     print('Starting...', flush=True)
 
     expected_reward = 3390
@@ -462,15 +450,17 @@ if __name__ == '__main__':
     if agent_host.receivedArgument("help"):
         print(agent_host.getUsage())
         exit(0)
-
+    sco = open("score.txt","w+")
+    dam = open("damage.txt","w+")
+    tim = open("time.txt","w+")
 # how many battle the agent need to run
-    battle_reps = 10
+    battle_reps = 100
     n=1
     hunter = hunter(n=n)
     print("n=",n)
     for iRepeat in range(battle_reps):
         print("Round "+str(iRepeat+1))
-        my_mission = MalmoPython.MissionSpec(GetMissionXML("Action #" + str(iRepeat)), True)
+        my_mission = MalmoPython.MissionSpec(GetMissionXML("Round #" + str(iRepeat)), True)
         my_mission_record = MalmoPython.MissionRecordSpec()  # Records nothing by default
         my_mission.requestVideo(800, 500)
         my_mission.setViewpoint(0)
@@ -496,7 +486,12 @@ if __name__ == '__main__':
         
         hunter.battlesetup(agent_host)
         time.sleep(0.5)
+        start_time = time.time()
         eva = hunter.run(agent_host)
-        print("Your score: "+str(eva[0])+". You do damage: "+str(eva[1]))
+        run_time = (time.time() - start_time) // 1
+        print("Score: "+str(eva[0])+". Damage: "+str(eva[1])+". Time: "+str(run_time))
+        sco.write(str(eva[0])+"\n")
+        dam.write(str(eva[1])+"\n")
+        tim.write(str(run_time)+"\n")
         time.sleep(0.5)
         agent_host.sendCommand("quit")

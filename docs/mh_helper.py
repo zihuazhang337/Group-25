@@ -1,29 +1,5 @@
 import random
 
-items=['pumpkin', 'sugar', 'egg', 'egg',
-       'planks','planks','red_mushroom']
-
-food_recipes = {'pumpkin_pie': ['pumpkin', 'egg', 'sugar'],
-                'pumpkin_seeds': ['pumpkin'],
-                'bowl':['planks', 'planks'],
-                'mushroom_stew':['bowl', 'red_mushroom']}
-
-rewards_map = {'pumpkin': -5, 'egg': -25, 'sugar': -10,
-               'pumpkin_pie': 100, 'pumpkin_seeds': -50,
-               'red_mushroom': 5, 'planks': -5, 'bowl': -1, 'mushroom_stew': 100}
-
-def is_solution(reward):
-#    return reward == 100
-   return reward == 200 #for part2
-
-def get_curr_state(items):
-    s = []
-    for item in items:
-        for quantity in range(item[1]):
-            s.append(item[0])
-    s.sort()
-    return tuple(s)
-
 def choose_action(curr_state, possible_actions, eps, q_table):
 #    return possible_actions[random.randint(0, len(possible_actions) - 1)]
     best = possible_actions[0]
